@@ -9,29 +9,26 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.assignment.freshly.Activities.ProductDetailActivity;
-import com.assignment.freshly.R;
+import com.assignment.freshly.Activities.LandingPageVendor.ProductDetailActivity;
 import com.assignment.freshly.Entity.Product;
+import com.assignment.freshly.R;
 
 import java.util.List;
 
-public class ListViewAdapter extends ArrayAdapter<Product> {
-
+public class ListViewAdapterCustomer extends ArrayAdapter<Product> {
     private Context context;
     private List<Product> productList;
 
-    public ListViewAdapter(Context context, List<Product> products) {
+    public ListViewAdapterCustomer(Context context, List<Product> products) {
         super(context, 0, products);
         this.context = context;
         this.productList = products;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.product_list_item_vendor, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.product_list_item_customer, parent, false);
         }
 
         ImageView imageView = convertView.findViewById(R.id.image_icon);
@@ -46,7 +43,7 @@ public class ListViewAdapter extends ArrayAdapter<Product> {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, productList.get(position).getTitle() + " added to cart", Toast.LENGTH_SHORT).show();
+
             }
         });
 

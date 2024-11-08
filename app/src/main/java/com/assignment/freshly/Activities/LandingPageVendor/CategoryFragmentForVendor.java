@@ -1,8 +1,6 @@
 package com.assignment.freshly.Activities.LandingPageVendor;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.assignment.freshly.Adapter.ListViewAdapter;
+import com.assignment.freshly.Adapter.ListViewAdapterVendor;
 import com.assignment.freshly.AsyncTask.Category.GetCategory;
 import com.assignment.freshly.AsyncTask.Product.GetVendorProducts;
 import com.assignment.freshly.AsyncTask.Product.InsertProduct;
@@ -26,7 +24,7 @@ import com.assignment.freshly.Entity.Product;
 
 import java.util.List;
 
-public class CategoryFragment extends Fragment {
+public class CategoryFragmentForVendor extends Fragment {
 
     ListView productList;
     TextView noProducts;
@@ -34,8 +32,8 @@ public class CategoryFragment extends Fragment {
     Button addProductBtn;
     private String categoryName;
 
-    public static CategoryFragment newInstance(String categoryName) {
-        CategoryFragment fragment = new CategoryFragment();
+    public static CategoryFragmentForVendor newInstance(String categoryName) {
+        CategoryFragmentForVendor fragment = new CategoryFragmentForVendor();
         Bundle args = new Bundle();
         args.putString("category_name", categoryName);
         fragment.setArguments(args);
@@ -87,7 +85,7 @@ public class CategoryFragment extends Fragment {
         new GetVendorProducts(getContext(), new GetVendorProducts.GetVendorProductsListener() {
             @Override
             public void onGetVendorProductsSuccess(List<Product> products) {
-                ListViewAdapter listViewAdapter = new ListViewAdapter(getContext(), products);
+                ListViewAdapterVendor listViewAdapter = new ListViewAdapterVendor(getContext(), products);
                 productList.setAdapter(listViewAdapter);
                 noProducts.setVisibility(View.GONE);
             }
@@ -105,7 +103,7 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onSuccess(List<Product> products) {
                 if (products != null && !products.isEmpty()) {
-                    ListViewAdapter listViewAdapter = new ListViewAdapter(getContext(), products);
+                    ListViewAdapterVendor listViewAdapter = new ListViewAdapterVendor(getContext(), products);
                     productList.setAdapter(listViewAdapter);
                     noProducts.setVisibility(View.GONE);
                 } else {

@@ -1,4 +1,4 @@
-package com.assignment.freshly.Activities;
+package com.assignment.freshly.Activities.LandingPageVendor;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

@@ -13,12 +13,11 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class LandingPage extends AppCompatActivity {
+public class LandingPageForVendor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        System.out.println("IN landing page");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -35,7 +34,7 @@ public class LandingPage extends AppCompatActivity {
         if (savedInstanceState == null) {
             navigationView.setCheckedItem(R.id.nav_category_0);
 
-            Fragment defaultFragment = CategoryFragment.newInstance(null);
+            Fragment defaultFragment = CategoryFragmentForVendor.newInstance(null);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_frame, defaultFragment)
                     .commit();
@@ -47,13 +46,13 @@ public class LandingPage extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 int id = item.getItemId();
                 if(id == R.id.nav_category_0){
-                    selectedFragment = CategoryFragment.newInstance(null);
+                    selectedFragment = CategoryFragmentForVendor.newInstance(null);
                 }else if (id == R.id.nav_category_1) {
-                    selectedFragment = CategoryFragment.newInstance("vegetable");
+                    selectedFragment = CategoryFragmentForVendor.newInstance("vegetable");
                 } else if (id == R.id.nav_category_2) {
-                    selectedFragment = CategoryFragment.newInstance("fruit");
+                    selectedFragment = CategoryFragmentForVendor.newInstance("fruit");
                 } else if (id == R.id.nav_category_3) {
-                    selectedFragment = CategoryFragment.newInstance("dry fruit");
+                    selectedFragment = CategoryFragmentForVendor.newInstance("dry fruit");
                 }
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction()

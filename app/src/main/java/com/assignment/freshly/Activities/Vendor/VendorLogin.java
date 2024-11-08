@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.assignment.freshly.Activities.LandingPageVendor.LandingPage;
+import com.assignment.freshly.Activities.LandingPageVendor.LandingPageForVendor;
 import com.assignment.freshly.AsyncTask.Vendor.GetVendor;
 import com.assignment.freshly.R;
 
@@ -42,7 +42,7 @@ public class VendorLogin extends AppCompatActivity {
                             editor.putInt("Vendor_Id", vendorId);
                             editor.apply();
 
-                            Intent intent = new Intent(VendorLogin.this, LandingPage.class);
+                            Intent intent = new Intent(VendorLogin.this, LandingPageForVendor.class);
                             startActivity(intent);
                             finish();
                         }

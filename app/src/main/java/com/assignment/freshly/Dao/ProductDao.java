@@ -36,5 +36,12 @@ public interface ProductDao {
     @Query("SELECT p.* FROM vendor v JOIN product p ON v.v_id = p.vendor_id WHERE v.v_id =:vendorId")
     public List<Product> getAllVendorProducts(int vendorId);
 
+    @Query("SELECT p.* FROM product p LIMIT 15")
+    public List<Product> getAllProducts();
+
+    @Query("SELECT p.* FROM product p JOIN category c ON C.ca_id = p.category_id WHERE c.name =:categoryName")
+    public List<Product> getProductsByCategory(String categoryName);
+
+
 
 }

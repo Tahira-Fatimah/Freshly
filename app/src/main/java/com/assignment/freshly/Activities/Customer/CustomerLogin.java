@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.assignment.freshly.Activities.LandingPageVendor.LandingPage;
+import com.assignment.freshly.Activities.LandingPageCustomer.LandingPageForCustomer;
 import com.assignment.freshly.R;
 import com.assignment.freshly.AsyncTask.Customer.GetVendor;
 
@@ -21,6 +21,7 @@ public class CustomerLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("I customer login");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
 
@@ -42,7 +43,7 @@ public class CustomerLogin extends AppCompatActivity {
                         editor.putInt("Customer_Id", customerId);
                         editor.apply();
                         System.out.println("Login successful");
-                        Intent intent = new Intent(CustomerLogin.this, LandingPage.class);
+                        Intent intent = new Intent(CustomerLogin.this, LandingPageForCustomer.class);
                         startActivity(intent);
 //                        finish();
                     }

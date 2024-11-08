@@ -23,24 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new InsertCategory(this).execute(new Category("vegetable"));
-        new InsertCategory(this).execute(new Category("fruit"));
-        new InsertCategory(this).execute(new Category("dry fruit"));
 
-        new InsertVendor(this, new InsertVendor.InsertVendorListener() {
-            @Override
-            public void insertListenerSuccess() {
-
-            }
-
-            @Override
-            public void insertListenerFailure() {
-
-            }
-        }).execute(new Vendor("Vendor 1", "password",  "03068557774", "Address"));
-//        new InsertProduct(this).execute(new Product("Cabbage", "not yum", 1, 1));
-//        new InsertProduct(this).execute(new Product("Tomato", "not yum", 1, 1));
-//        new InsertProduct(this).execute(new Product("Gobi", "not yum", 1, 1));
+        initProject(savedInstanceState);
         asVendor = findViewById(R.id.btnLoginAsVendor);
         asCustomer = findViewById(R.id.btnLoginAsCustomer);
 
@@ -61,7 +45,26 @@ public class MainActivity extends AppCompatActivity {
 //                finish();
             }
         });
+    }
 
+    private void initProject(Bundle savedInstanceState){
+        if(savedInstanceState == null){
+            new InsertCategory(this).execute(new Category("vegetable"));
+            new InsertCategory(this).execute(new Category("fruit"));
+            new InsertCategory(this).execute(new Category("dry fruit"));
+
+            new InsertVendor(this, new InsertVendor.InsertVendorListener() {
+                @Override
+                public void insertListenerSuccess() {
+
+                }
+
+                @Override
+                public void insertListenerFailure() {
+
+                }
+            }).execute(new Vendor("Vendor 1", "password",  "03068557774", "Address"));
+        }
 
     }
 }
