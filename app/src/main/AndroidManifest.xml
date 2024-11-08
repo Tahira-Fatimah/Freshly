@@ -31,7 +31,7 @@
             android:name=".Activities.ProductDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.LandingPage.LandingPage"
+            android:name=".Activities.LandingPageVendor.LandingPage"
             android:exported="false" />
         <activity
             android:name=".Activities.Customer.CustomerLogin"

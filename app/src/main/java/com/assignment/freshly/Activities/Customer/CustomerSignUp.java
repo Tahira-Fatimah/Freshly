@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.assignment.freshly.R;
 import com.assignment.freshly.AsyncTask.Customer.InsertCustomer;
 import com.assignment.freshly.Entity.Customer;
+import com.assignment.freshly.Utils.ValidationUtils;
 
 public class CustomerSignUp extends AppCompatActivity {
 
@@ -35,7 +36,7 @@ public class CustomerSignUp extends AppCompatActivity {
             String password = passwordTextView.getText().toString().trim();
             int selectedGenderId = genderRadioGroup.getCheckedRadioButtonId();
 
-            if (isEmailValid(email) && isPasswordValid(password) && isGenderValid(selectedGenderId)) {
+            if (ValidationUtils.isEmailValid(email) && ValidationUtils.isPasswordValid(password) && ValidationUtils.isGenderValid(selectedGenderId)) {
                 RadioButton selectedGenderButton = findViewById(selectedGenderId);
                 String gender = selectedGenderButton.getText().toString();
                 System.out.println("Gender " + gender);
@@ -65,18 +66,4 @@ public class CustomerSignUp extends AppCompatActivity {
         finish();
     }
 
-
-    private boolean isEmailValid(String email) {
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-        return email.matches(emailRegex);
-    }
-
-    private boolean isPasswordValid(String password) {
-        String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}";
-        return password.matches(passwordRegex);
-    }
-
-    private boolean isGenderValid(int selectedGenderId) {
-        return selectedGenderId != -1;
-    }
 }

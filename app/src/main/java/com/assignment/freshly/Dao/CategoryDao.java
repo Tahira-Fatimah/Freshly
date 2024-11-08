@@ -26,4 +26,7 @@ public interface CategoryDao {
 
     @Update
     void updateCategory(Category category);
+
+    @Query("SELECT c.* FROM category c WHERE c.name =:category")
+    public Category getCategoryByName(String category);
 }

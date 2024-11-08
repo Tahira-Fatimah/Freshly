@@ -8,14 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.assignment.freshly.Activities.Customer.CustomerLogin;
-import com.assignment.freshly.Activities.LandingPage.LandingPage;
+import com.assignment.freshly.Activities.LandingPageVendor.LandingPage;
 import com.assignment.freshly.AsyncTask.Vendor.GetVendor;
 import com.assignment.freshly.R;
 
@@ -44,7 +39,7 @@ public class VendorLogin extends AppCompatActivity {
                         public void GetCustomerListenerSuccess(int vendorId) {
                             SharedPreferences sharedPreferences = getSharedPreferences("Vendor_Details", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putInt("Vendor Id", vendorId);
+                            editor.putInt("Vendor_Id", vendorId);
                             editor.apply();
 
                             Intent intent = new Intent(VendorLogin.this, LandingPage.class);
@@ -64,5 +59,10 @@ public class VendorLogin extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void goToVendorSignup(View view){
+        Intent intent = new Intent(this, VendorSignUp.class);
+        startActivity(intent);
     }
 }

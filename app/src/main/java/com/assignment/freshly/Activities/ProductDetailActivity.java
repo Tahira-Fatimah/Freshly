@@ -77,7 +77,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                             @Override
                             public void DeleteProductFailure() {
-
+                                finish();
                             }
                         }).execute(product);
                     }

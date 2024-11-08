@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.assignment.freshly.Activities.LandingPage.LandingPage;
+import com.assignment.freshly.Activities.LandingPageVendor.LandingPage;
 import com.assignment.freshly.R;
 import com.assignment.freshly.AsyncTask.Customer.GetVendor;
 
@@ -41,9 +41,10 @@ public class CustomerLogin extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("Customer_Id", customerId);
                         editor.apply();
+                        System.out.println("Login successful");
                         Intent intent = new Intent(CustomerLogin.this, LandingPage.class);
                         startActivity(intent);
-                        finish();
+//                        finish();
                     }
                     @Override
                     public void onLoginFailed() {

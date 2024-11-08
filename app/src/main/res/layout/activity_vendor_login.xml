@@ -38,6 +38,6 @@
         android:layout_gravity="center"
         android:paddingTop="16dp"
         android:clickable="true"
-        android:onClick="goToCustomerSignup" />
+        android:onClick="goToVendorSignup" />
 
 </LinearLayout>

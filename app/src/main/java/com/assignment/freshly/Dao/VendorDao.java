@@ -34,4 +34,5 @@ public interface VendorDao {
     @Query("SELECT * FROM vendor")
     LiveData<List<Vendor>> getAllVendors();
 
+
 }

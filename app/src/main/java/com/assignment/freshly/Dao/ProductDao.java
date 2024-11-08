@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.assignment.freshly.Entity.Product;
+import com.assignment.freshly.Entity.Vendor;
 
 import java.util.List;
 
@@ -31,6 +32,9 @@ public interface ProductDao {
 
     @Query("SELECT p.* FROM product p WHERE p.p_id =:productId")
     public Product getProductById(int productId);
+
+    @Query("SELECT p.* FROM vendor v JOIN product p ON v.v_id = p.vendor_id WHERE v.v_id =:vendorId")
+    public List<Product> getAllVendorProducts(int vendorId);
 
 
 }

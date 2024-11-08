@@ -31,7 +31,7 @@ public class ListViewAdapter extends ArrayAdapter<Product> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.product_list_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.product_list_item_vendor, parent, false);
         }
 
         ImageView imageView = convertView.findViewById(R.id.image_icon);

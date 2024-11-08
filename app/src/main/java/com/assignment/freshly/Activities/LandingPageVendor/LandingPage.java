@@ -1,4 +1,4 @@
-package com.assignment.freshly.Activities.LandingPage;
+package com.assignment.freshly.Activities.LandingPageVendor;
 
 import com.assignment.freshly.R; // Make sure this is the correct one
 import android.os.Bundle;
@@ -17,6 +17,8 @@ public class LandingPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        System.out.println("IN landing page");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -29,12 +31,24 @@ public class LandingPage extends AppCompatActivity {
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
+
+        if (savedInstanceState == null) {
+            navigationView.setCheckedItem(R.id.nav_category_0);
+
+            Fragment defaultFragment = CategoryFragment.newInstance(null);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, defaultFragment)
+                    .commit();
+        }
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
                 int id = item.getItemId();
-                if (id == R.id.nav_category_1) {
+                if(id == R.id.nav_category_0){
+                    selectedFragment = CategoryFragment.newInstance(null);
+                }else if (id == R.id.nav_category_1) {
                     selectedFragment = CategoryFragment.newInstance("vegetable");
                 } else if (id == R.id.nav_category_2) {
                     selectedFragment = CategoryFragment.newInstance("fruit");
@@ -51,6 +65,8 @@ public class LandingPage extends AppCompatActivity {
                 return true;
             }
         });
+
+
 
     }
 }

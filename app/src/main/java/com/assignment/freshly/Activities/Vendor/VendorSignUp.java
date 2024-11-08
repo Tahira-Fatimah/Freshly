@@ -8,12 +8,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.assignment.freshly.Activities.Customer.CustomerLogin;
-import com.assignment.freshly.Activities.Customer.CustomerSignUp;
 import com.assignment.freshly.AsyncTask.Vendor.InsertVendor;
 import com.assignment.freshly.Entity.Vendor;
 import com.assignment.freshly.R;
+import com.assignment.freshly.Utils.ValidationUtils;
 
 public class VendorSignUp extends AppCompatActivity {
     EditText usernameTextView, passwordTextView, phoneTextView, addressTextView;
@@ -36,10 +34,11 @@ public class VendorSignUp extends AppCompatActivity {
                 String phone = phoneTextView.getText().toString();
                 String address = addressTextView.getText().toString();
 
-                if(isUsernameValid(username) && isPasswordValid(password) && isValidPhoneNumber(phone) && isAddressValid(address)){
+                if(ValidationUtils.isUsernameValid(username) && ValidationUtils.isPasswordValid(password) && ValidationUtils.isValidPhoneNumber(phone) && ValidationUtils.isAddressValid(address)){
                     new InsertVendor(getApplicationContext(), new InsertVendor.InsertVendorListener() {
                         @Override
                         public void insertListenerSuccess() {
+                            System.out.println("Vendor signed up");
                             Intent intent = new Intent(VendorSignUp.this, VendorLogin.class);
                             startActivity(intent);
                             finish();
@@ -58,28 +57,8 @@ public class VendorSignUp extends AppCompatActivity {
         });
     }
 
-    private boolean isUsernameValid(String username) {
-        return username!= null;
-    }
-
-    private boolean isPasswordValid(String password) {
-        String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}";
-        return password.matches(passwordRegex);
-    }
-
-    public boolean isValidPhoneNumber(String phoneNumber) {
-        String regex = "^03\\d{2}-\\d{7}$";
-        return phoneNumber.matches(regex);
-    }
-
-
-    private boolean isAddressValid(String address){
-        return address!=null && address.length()>10;
-    }
-
-    public void goToVendorLogin(){
-        Intent intent = new Intent(VendorSignUp.this, VendorLogin.class);
+    public void goToVendorLogin(View view){
+        Intent intent = new Intent(this, VendorLogin.class);
         startActivity(intent);
-        finish();
     }
 }
