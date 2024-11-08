@@ -1,4 +1,4 @@
-package com.assignment.freshly.Activities;
+package com.assignment.freshly.Activities.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.assignment.freshly.R;
-import com.assignment.freshly.asynTask.Customer.InsertCustomer;
-import com.assignment.freshly.entity.Customer;
+import com.assignment.freshly.AsyncTask.Customer.InsertCustomer;
+import com.assignment.freshly.Entity.Customer;
 
 public class CustomerSignUp extends AppCompatActivity {
 
@@ -62,6 +62,7 @@ public class CustomerSignUp extends AppCompatActivity {
     public void goToCustomerLogin(View view) {
         Intent intent = new Intent(this, CustomerLogin.class);
         startActivity(intent);
+        finish();
     }
 
 

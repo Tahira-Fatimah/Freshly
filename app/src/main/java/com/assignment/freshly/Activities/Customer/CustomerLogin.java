@@ -1,4 +1,4 @@
-package com.assignment.freshly.Activities;
+package com.assignment.freshly.Activities.Customer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.assignment.freshly.Activities.LandingPage.LandingPage;
 import com.assignment.freshly.R;
-import com.assignment.freshly.asynTask.Customer.GetCustomer;
+import com.assignment.freshly.AsyncTask.Customer.GetVendor;
 
 public class CustomerLogin extends AppCompatActivity {
 
@@ -34,7 +34,7 @@ public class CustomerLogin extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
 
             if (!email.isEmpty() && !password.isEmpty()) {
-                new GetCustomer(this, new GetCustomer.OnLoginResultListener() {
+                new GetVendor(this, new GetVendor.OnLoginResultListener() {
                     @Override
                     public void onLoginSuccess(int customerId) {
                         SharedPreferences sharedPreferences = getSharedPreferences("Current_User_details", Context.MODE_PRIVATE);

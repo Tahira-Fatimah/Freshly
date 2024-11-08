@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Freshly"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Vendor.VendorLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Vendor.VendorSignUp"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -28,10 +34,10 @@
             android:name=".Activities.LandingPage.LandingPage"
             android:exported="false" />
         <activity
-            android:name=".Activities.CustomerLogin"
+            android:name=".Activities.Customer.CustomerLogin"
             android:exported="false" />
         <activity
-            android:name=".Activities.CustomerSignUp"
+            android:name=".Activities.Customer.CustomerSignUp"
             android:exported="false" />
     </application>
 

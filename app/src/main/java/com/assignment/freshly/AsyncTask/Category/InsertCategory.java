@@ -1,10 +1,10 @@
-package com.assignment.freshly.asynTask.Category;
+package com.assignment.freshly.AsyncTask.Category;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.assignment.freshly.DatabaseConfig.DatabaseClient;
-import com.assignment.freshly.entity.Category;
+import com.assignment.freshly.Entity.Category;
 
 public class InsertCategory extends AsyncTask<Category, Void, Long> {
     private Context context;

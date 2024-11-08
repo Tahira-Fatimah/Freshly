@@ -12,10 +12,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.assignment.freshly.R;
-import com.assignment.freshly.asynTask.Product.DeleteProduct;
-import com.assignment.freshly.asynTask.Product.GetProduct;
-import com.assignment.freshly.asynTask.Product.UpdateProduct;
-import com.assignment.freshly.entity.Product;
+import com.assignment.freshly.AsyncTask.Product.DeleteProduct;
+import com.assignment.freshly.AsyncTask.Product.GetProduct;
+import com.assignment.freshly.AsyncTask.Product.UpdateProduct;
+import com.assignment.freshly.Entity.Product;
 
 public class ProductDetailActivity extends AppCompatActivity {
     TextView productTitle, productDesc;

@@ -13,4 +13,5 @@
     <string-array name="nav_drawer_options">
         <item>Vegetables</item>
     </string-array>
+    <string name="welcome_messgae">Welcome to Freshly! 🌱 Your one-stop app for fresh fruits, veggies</string>
 </resources>

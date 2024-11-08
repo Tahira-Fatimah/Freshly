@@ -1,4 +1,4 @@
-package com.assignment.freshly.entity;
+package com.assignment.freshly.Entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;

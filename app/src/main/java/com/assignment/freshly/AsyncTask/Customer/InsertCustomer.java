@@ -1,11 +1,11 @@
-package com.assignment.freshly.asynTask.Customer;
+package com.assignment.freshly.AsyncTask.Customer;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.assignment.freshly.DatabaseConfig.DatabaseClient;
-import com.assignment.freshly.dao.CustomerDao;
-import com.assignment.freshly.entity.Customer;
+import com.assignment.freshly.Dao.CustomerDao;
+import com.assignment.freshly.Entity.Customer;
 
 public class InsertCustomer extends AsyncTask<Customer, Void, Long> {
     private Context context;

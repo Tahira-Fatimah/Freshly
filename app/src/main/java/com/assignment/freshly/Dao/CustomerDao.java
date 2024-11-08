@@ -1,10 +1,10 @@
-package com.assignment.freshly.dao;
+package com.assignment.freshly.Dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.assignment.freshly.entity.Customer;
+import com.assignment.freshly.Entity.Customer;
 
 @Dao
 public interface CustomerDao {

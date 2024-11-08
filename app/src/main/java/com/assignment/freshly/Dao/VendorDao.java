@@ -1,14 +1,13 @@
-package com.assignment.freshly.dao;
+package com.assignment.freshly.Dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.assignment.freshly.entity.Vendor;
+import com.assignment.freshly.Entity.Vendor;
 
 import java.util.List;
 
@@ -23,8 +22,11 @@ public interface VendorDao {
     @Delete
     public void deleteVendor(Vendor vendor);
 
-    @Query("SELECT * FROM vendor WHERE username = :username AND password = :password LIMIT 1")
-    LiveData<Vendor> authenticateVendor(String username, String password);
+    @Query("SELECT v.* FROM vendor v WHERE v.username =:username")
+    public Vendor getVendorById(String username);
+
+    @Query("SELECT v.* FROM vendor v WHERE v.username = :username AND v.password = :password LIMIT 1")
+    public Vendor authenticateVendor(String username, String password);
 
     @Query("SELECT * FROM vendor WHERE v_id = :vendorId")
     LiveData<Vendor> getVendorById(int vendorId);

@@ -1,4 +1,4 @@
-package com.assignment.freshly.entity;
+package com.assignment.freshly.Entity;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -19,10 +19,17 @@ public class Vendor {
 
     private String address;
 
-    public Vendor(String username, String password, String imagePath, String phone, String address) {
+//    public Vendor(String username, String password, String imagePath, String phone, String address) {
+//        this.username = username;
+//        this.password = password;
+//        this.imagePath = imagePath;
+//        this.phone = phone;
+//        this.address = address;
+//    }
+
+    public Vendor(String username, String password,String phone, String address) {
         this.username = username;
         this.password = password;
-        this.imagePath = imagePath;
         this.phone = phone;
         this.address = address;
     }

@@ -1,14 +1,12 @@
-package com.assignment.freshly.dao;
+package com.assignment.freshly.Dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
-import androidx.room.Dao;
 
-import com.assignment.freshly.entity.Category;
+import com.assignment.freshly.Entity.Category;
 
 import java.util.List;
 

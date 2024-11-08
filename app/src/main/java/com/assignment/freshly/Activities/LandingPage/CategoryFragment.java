@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.assignment.freshly.Adapter.ListViewAdapter;
 import com.assignment.freshly.R;
-import com.assignment.freshly.asynTask.Product.GetProductByCateogoryAndVendor;
-import com.assignment.freshly.entity.Product;
+import com.assignment.freshly.AsyncTask.Product.GetProductByCateogoryAndVendor;
+import com.assignment.freshly.Entity.Product;
 
 import java.util.List;
 

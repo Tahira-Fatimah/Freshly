@@ -1,11 +1,11 @@
-package com.assignment.freshly.asynTask.Product;
+package com.assignment.freshly.AsyncTask.Product;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.assignment.freshly.DatabaseConfig.DatabaseClient;
-import com.assignment.freshly.dao.ProductDao;
-import com.assignment.freshly.entity.Product;
+import com.assignment.freshly.Dao.ProductDao;
+import com.assignment.freshly.Entity.Product;
 
 public class GetProduct extends AsyncTask<Integer, Void, Product> {
     private Context context;

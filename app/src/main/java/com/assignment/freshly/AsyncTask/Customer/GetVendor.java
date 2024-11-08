@@ -1,18 +1,18 @@
-package com.assignment.freshly.asynTask.Customer;
+package com.assignment.freshly.AsyncTask.Customer;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.assignment.freshly.DatabaseConfig.DatabaseClient;
-import com.assignment.freshly.dao.CustomerDao;
-import com.assignment.freshly.entity.Customer;
+import com.assignment.freshly.Dao.CustomerDao;
+import com.assignment.freshly.Entity.Customer;
 
-public class GetCustomer extends AsyncTask<String, Void, Customer> {
+public class GetVendor extends AsyncTask<String, Void, Customer> {
     private Context context;
     private OnLoginResultListener listener;
 
-    public GetCustomer(Context context, OnLoginResultListener listener){
+    public GetVendor(Context context, OnLoginResultListener listener){
         this.context = context;
         this.listener = listener;
     }

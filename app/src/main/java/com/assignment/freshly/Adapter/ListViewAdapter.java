@@ -13,9 +13,7 @@ import android.widget.Toast;
 
 import com.assignment.freshly.Activities.ProductDetailActivity;
 import com.assignment.freshly.R;
-import com.assignment.freshly.entity.Product;
-
-import org.w3c.dom.Text;
+import com.assignment.freshly.Entity.Product;
 
 import java.util.List;
 
