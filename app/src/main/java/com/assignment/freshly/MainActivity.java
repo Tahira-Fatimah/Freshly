@@ -53,17 +53,6 @@ public class MainActivity extends AppCompatActivity {
             new InsertCategory(this).execute(new Category("fruit"));
             new InsertCategory(this).execute(new Category("dry fruit"));
 
-            new InsertVendor(this, new InsertVendor.InsertVendorListener() {
-                @Override
-                public void insertListenerSuccess() {
-
-                }
-
-                @Override
-                public void insertListenerFailure() {
-
-                }
-            }).execute(new Vendor("Vendor 1", "password",  "03068557774", "Address"));
         }
 
     }

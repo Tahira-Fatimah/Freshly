@@ -17,7 +17,7 @@ public class LandingPageForVendor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        System.out.println("In vendor Landing page");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);

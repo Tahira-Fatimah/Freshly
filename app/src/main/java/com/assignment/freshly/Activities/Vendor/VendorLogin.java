@@ -21,11 +21,12 @@ public class VendorLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("In Vendor Login");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_login);
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
-        loginButton.findViewById(R.id.login_button);
+        loginButton = findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,6 +18,7 @@ public class VendorSignUp extends AppCompatActivity {
     Button signUpBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("In Vendor Signup");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_sign_up);
         usernameTextView = findViewById(R.id.signup_username);

@@ -1,6 +1,8 @@
 package com.assignment.freshly.Activities.LandingPageVendor;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,6 +33,7 @@ public class CategoryFragmentForVendor extends Fragment {
     TextView title;
     Button addProductBtn;
     private String categoryName;
+    private int vendorId;
 
     public static CategoryFragmentForVendor newInstance(String categoryName) {
         CategoryFragmentForVendor fragment = new CategoryFragmentForVendor();
@@ -43,6 +46,8 @@ public class CategoryFragmentForVendor extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Vendor_Details", Context.MODE_PRIVATE);
+        vendorId = sharedPreferences.getInt("Vendor_Id",-1);
         if (getArguments() != null) {
             categoryName = getArguments().getString("category_name");
         }
@@ -95,7 +100,7 @@ public class CategoryFragmentForVendor extends Fragment {
                 noProducts.setText("No " + categoryName + "s found !!");
                 noProducts.setVisibility(View.VISIBLE);
             }
-        }).execute(1);
+        }).execute(vendorId);
     }
 
     private void getProductsByVendorAndCategory(){
@@ -116,7 +121,7 @@ public class CategoryFragmentForVendor extends Fragment {
             public void onFailure() {
                 noProducts.setText("Failed to load " + categoryName + "s.");
             }
-        }).execute(1, categoryName);
+        }).execute(vendorId, categoryName);
     }
 
     private void loadProductList() {
