@@ -1,6 +1,7 @@
 package com.assignment.freshly;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,13 +48,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initProject(Bundle savedInstanceState){
-        if(savedInstanceState == null){
+    private void initProject(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = getSharedPreferences("FRESHLY_PREFERENCES", MODE_PRIVATE);
+        boolean isInitialized = sharedPreferences.getBoolean("isInitialized", false);
+
+        if (!isInitialized) {
             new InsertCategory(this).execute(new Category("vegetable"));
             new InsertCategory(this).execute(new Category("fruit"));
             new InsertCategory(this).execute(new Category("dry fruit"));
 
+            sharedPreferences.edit().putBoolean("isInitialized", true).apply();
         }
-
     }
 }
