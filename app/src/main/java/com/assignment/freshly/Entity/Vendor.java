@@ -13,19 +13,19 @@ public class Vendor {
 
     private String password;
 
-    private String imagePath;
+    private byte[] imagePath;
 
     private String phone;
 
     private String address;
 
-//    public Vendor(String username, String password, String imagePath, String phone, String address) {
-//        this.username = username;
-//        this.password = password;
-//        this.imagePath = imagePath;
-//        this.phone = phone;
-//        this.address = address;
-//    }
+    public Vendor(int vendorId, String username, String password, String phone, String address) {
+        this.username = username;
+        this.v_id = vendorId;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+    }
 
     public Vendor(String username, String password,String phone, String address) {
         this.username = username;
@@ -50,11 +50,11 @@ public class Vendor {
         this.password = password;
     }
 
-    public String getImagePath() {
+    public byte[] getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(byte[] imagePath) {
         this.imagePath = imagePath;
     }
 

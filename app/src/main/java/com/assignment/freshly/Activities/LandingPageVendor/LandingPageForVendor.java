@@ -1,8 +1,18 @@
 package com.assignment.freshly.Activities.LandingPageVendor;
 
+import com.assignment.freshly.Activities.Vendor.EditProfile;
+import com.assignment.freshly.AsyncTask.Vendor.GetProfileImage;
 import com.assignment.freshly.R; // Make sure this is the correct one
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,12 +24,28 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class LandingPageForVendor extends AppCompatActivity {
-
+    ImageView profileImage;
+    int vendorId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("In vendor Landing page");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Vendor_Details", Context.MODE_PRIVATE);
+        vendorId = sharedPreferences.getInt("Vendor_Id",-1);
+
+        profileImage = findViewById(R.id.profile_image);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+                intent.putExtra("VendorId", vendorId);
+                startActivity(intent);
+            }
+        });
+        displayProfileImage();
+
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,5 +93,26 @@ public class LandingPageForVendor extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        displayProfileImage();
+    }
+
+    private void displayProfileImage(){
+        new GetProfileImage(getApplicationContext(), new GetProfileImage.GetProfileImageListener() {
+            @Override
+            public void onSuccess(byte[] res) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(res , 0, res.length);
+                profileImage.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onFailure() {
+                profileImage.setImageResource(R.drawable.ic_default_image);
+            }
+        }).execute(vendorId);
     }
 }

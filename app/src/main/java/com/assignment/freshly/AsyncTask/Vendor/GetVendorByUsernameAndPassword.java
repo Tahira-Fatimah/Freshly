@@ -7,11 +7,11 @@ import com.assignment.freshly.Dao.VendorDao;
 import com.assignment.freshly.DatabaseConfig.DatabaseClient;
 import com.assignment.freshly.Entity.Vendor;
 
-public class GetVendor extends AsyncTask<String, Void, Vendor> {
+public class GetVendorByUsernameAndPassword extends AsyncTask<String, Void, Vendor> {
     private Context context;
     private GetCustomerListener getCustomerListener;
 
-    public GetVendor(Context context, GetCustomerListener getCustomerListener){
+    public GetVendorByUsernameAndPassword(Context context, GetCustomerListener getCustomerListener){
         this.context = context;
         this.getCustomerListener = getCustomerListener;
     }

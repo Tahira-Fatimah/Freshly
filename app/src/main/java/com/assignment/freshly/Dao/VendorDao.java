@@ -17,7 +17,7 @@ public interface VendorDao {
     public Long insertVendor(Vendor vendor);
 
     @Update
-    public void updateVendor(Vendor vendor);
+    public int updateVendor(Vendor vendor);
 
     @Delete
     public void deleteVendor(Vendor vendor);
@@ -28,11 +28,14 @@ public interface VendorDao {
     @Query("SELECT v.* FROM vendor v WHERE v.username = :username AND v.password = :password LIMIT 1")
     public Vendor authenticateVendor(String username, String password);
 
-    @Query("SELECT * FROM vendor WHERE v_id = :vendorId")
-    LiveData<Vendor> getVendorById(int vendorId);
+    @Query("SELECT v.* FROM vendor v WHERE v.v_id = :vendorId")
+    public Vendor getVendorById(int vendorId);
 
     @Query("SELECT * FROM vendor")
     LiveData<List<Vendor>> getAllVendors();
+
+    @Query("SELECT v.imagePath FROM vendor v WHERE v.v_id =:vendorId")
+    public byte[] getVendorProfileImage(int vendorId);
 
 
 }

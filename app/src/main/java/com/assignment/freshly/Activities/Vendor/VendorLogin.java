@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.assignment.freshly.Activities.LandingPageVendor.LandingPageForVendor;
-import com.assignment.freshly.AsyncTask.Vendor.GetVendor;
+import com.assignment.freshly.AsyncTask.Vendor.GetVendorByUsernameAndPassword;
 import com.assignment.freshly.R;
 
 public class VendorLogin extends AppCompatActivity {
@@ -35,7 +35,7 @@ public class VendorLogin extends AppCompatActivity {
                 String password = loginPassword.getText().toString();
 
                 if(!username.isEmpty() && !password.isEmpty()){
-                    new GetVendor(getApplicationContext(), new GetVendor.GetCustomerListener() {
+                    new GetVendorByUsernameAndPassword(getApplicationContext(), new GetVendorByUsernameAndPassword.GetCustomerListener() {
                         @Override
                         public void GetCustomerListenerSuccess(int vendorId) {
                             SharedPreferences sharedPreferences = getSharedPreferences("Vendor_Details", MODE_PRIVATE);
