@@ -2,6 +2,8 @@ package com.assignment.freshly.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +38,18 @@ public class ListViewAdapterVendor extends ArrayAdapter<Product> {
         ImageView imageView = convertView.findViewById(R.id.image_icon);
         TextView title = convertView.findViewById(R.id.title);
         TextView description = convertView.findViewById(R.id.description);
-        Button addToCart = convertView.findViewById(R.id.btn_add_to_cart);
 
         title.setText(productList.get(position).getTitle());
         description.setText(productList.get(position).getDescription());
         imageView.setImageResource(0);
+
+        if (productList.get(position).getImagePath() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(productList.get(position).getImagePath() , 0, productList.get(position).getImagePath().length);
+            imageView.setImageBitmap(bitmap);
+        }
+        else {
+            imageView.setImageResource(R.drawable.ic_default_image);
+        }
 
 
         convertView.setOnClickListener(new View.OnClickListener(){

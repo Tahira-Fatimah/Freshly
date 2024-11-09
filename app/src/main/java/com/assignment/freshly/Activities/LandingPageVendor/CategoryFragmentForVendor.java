@@ -1,17 +1,24 @@
 package com.assignment.freshly.Activities.LandingPageVendor;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +31,8 @@ import com.assignment.freshly.R;
 import com.assignment.freshly.AsyncTask.Product.GetProductByCateogoryAndVendor;
 import com.assignment.freshly.Entity.Product;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public class CategoryFragmentForVendor extends Fragment {
@@ -34,6 +43,10 @@ public class CategoryFragmentForVendor extends Fragment {
     Button addProductBtn;
     private String categoryName;
     private int vendorId;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Bitmap selectedImageBitmap;
+    private byte[] productImageBytes;
+    private ImageView productImageView;
 
     public static CategoryFragmentForVendor newInstance(String categoryName) {
         CategoryFragmentForVendor fragment = new CategoryFragmentForVendor();
@@ -60,6 +73,7 @@ public class CategoryFragmentForVendor extends Fragment {
         productList = productView.findViewById(R.id.product_list_view);
         title = productView.findViewById(R.id.product_category);
         addProductBtn = productView.findViewById(R.id.addProductBtn);
+        productImageView = productView.findViewById(R.id.product_image_view);
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +153,18 @@ public class CategoryFragmentForVendor extends Fragment {
         EditText productTitleEditText = dialogView.findViewById(R.id.product_title);
         EditText productDescriptionEditText = dialogView.findViewById(R.id.product_description);
         Button saveProductButton = dialogView.findViewById(R.id.save_product_button);
+        ImageView dialogProductImageView = dialogView.findViewById(R.id.product_image_view);
+        Button selectImageButton = dialogView.findViewById(R.id.select_image_button);
+        productImageView = dialogProductImageView;
+
+        selectImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialogView);
@@ -174,7 +200,7 @@ public class CategoryFragmentForVendor extends Fragment {
                                     System.out.println("Insert Product Failue");
                                     dialog.dismiss();
                                 }
-                            }).execute(new Product(title, description,categoryId, 1));
+                            }).execute(new Product(title, description,categoryId, 1, productImageBytes));
                         }
 
                         @Override
@@ -188,6 +214,28 @@ public class CategoryFragmentForVendor extends Fragment {
         });
 
         dialog.show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri selectedImageUri = data.getData();
+            try {
+                selectedImageBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImageUri);
+                productImageBytes = getBytesFromBitmap(selectedImageBitmap);
+                productImageView.setImageBitmap(selectedImageBitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(getContext(), "Failed to load image", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
     }
 
 }

@@ -19,6 +19,19 @@
         android:hint="Product Description"
         android:inputType="text" />
 
+    <ImageView
+        android:id="@+id/product_image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Product Image"
+        android:src="@drawable/ic_default_image" />
+
+    <Button
+        android:id="@+id/select_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Image" />
+
     <Button
         android:id="@+id/save_product_button"
         android:layout_width="wrap_content"

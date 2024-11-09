@@ -28,14 +28,15 @@ public class Product {
     private String description;
     private int category_id;
     private int vendor_id;
-    private String imagePath;
+    private byte[] imagePath;
 
 
-    public Product(String title, String description, int category_id, int vendor_id) {
+    public Product(String title, String description, int category_id, int vendor_id, byte[] imagePath) {
         this.title = title;
         this.description = description;
         this.category_id = category_id;
         this.vendor_id = vendor_id;
+        this.imagePath = imagePath;
     }
 
     public int getP_id() {
@@ -50,11 +51,11 @@ public class Product {
         return title;
     }
 
-    public String getImagePath() {
+    public byte[] getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(byte[] imagePath) {
         this.imagePath = imagePath;
     }
 
