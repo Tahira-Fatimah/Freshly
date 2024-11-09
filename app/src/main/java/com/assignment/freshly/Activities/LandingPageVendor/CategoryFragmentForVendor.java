@@ -183,8 +183,6 @@ public class CategoryFragmentForVendor extends Fragment {
                     new GetCategory(getContext(), new GetCategory.GetCategoryListener() {
                         @Override
                         public void onGetCategorySuccess(int categoryId) {
-//                            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Vendor_Details", Context.MODE_PRIVATE);
-//                            int vendorId = sharedPreferences.getInt("Vendor_Id", -1);
                             System.out.println("Get Category Success");
 
                             new InsertProduct(getContext(), new InsertProduct.InsertProductListener() {
@@ -200,7 +198,7 @@ public class CategoryFragmentForVendor extends Fragment {
                                     System.out.println("Insert Product Failue");
                                     dialog.dismiss();
                                 }
-                            }).execute(new Product(title, description,categoryId, 1, productImageBytes));
+                            }).execute(new Product(title, description,categoryId, vendorId, productImageBytes));
                         }
 
                         @Override

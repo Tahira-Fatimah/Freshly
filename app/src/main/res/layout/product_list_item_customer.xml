@@ -43,6 +43,7 @@
             android:textSize="14sp"
             android:textColor="#757575"
             android:paddingBottom="8dp" />
+
     </LinearLayout>
 
     <Button
@@ -53,8 +54,6 @@
         android:backgroundTint="?attr/colorPrimary"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:layout_marginStart="8dp"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="4dp" />
+        android:layout_gravity="center_vertical" />
 
 </LinearLayout>
