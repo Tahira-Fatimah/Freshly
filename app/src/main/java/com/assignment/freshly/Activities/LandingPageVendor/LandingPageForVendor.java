@@ -1,6 +1,6 @@
 package com.assignment.freshly.Activities.LandingPageVendor;
 
-import com.assignment.freshly.Activities.Vendor.EditProfile;
+import com.assignment.freshly.Activities.Vendor.EditProfileVendor;
 import com.assignment.freshly.AsyncTask.Vendor.GetProfileImage;
 import com.assignment.freshly.R; // Make sure this is the correct one
 
@@ -39,7 +39,7 @@ public class LandingPageForVendor extends AppCompatActivity {
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+                Intent intent = new Intent(getApplicationContext(), EditProfileVendor.class);
                 intent.putExtra("VendorId", vendorId);
                 startActivity(intent);
             }

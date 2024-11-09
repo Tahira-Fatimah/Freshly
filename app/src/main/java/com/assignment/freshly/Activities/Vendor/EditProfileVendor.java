@@ -13,11 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.assignment.freshly.AsyncTask.Vendor.GetVendorById;
 import com.assignment.freshly.Entity.Vendor;
@@ -25,7 +21,7 @@ import com.assignment.freshly.R;
 import com.assignment.freshly.Utils.ImageUtils;
 import com.assignment.freshly.Utils.ValidationUtils;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfileVendor extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     int vendorId;
